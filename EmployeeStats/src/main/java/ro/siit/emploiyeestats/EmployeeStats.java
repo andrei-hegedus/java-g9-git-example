@@ -14,10 +14,22 @@ public class EmployeeStats {
     }
 
     public Employee getEmployeeWithHighestSalary() {
-        return new Employee("John", 500, new Date());
+        Employee bestPayed = new Employee("Dummy", 0, new Date());
+        for (Employee e : employees.getEmployees()) {
+            if (e.getSalary() > bestPayed.getSalary()) {
+                bestPayed = e;
+            }
+        }
+        return bestPayed;
     }
 
     public Employee getEmployeeWithHighestSeniority() {
-        return new Employee("Jim", 500, new Date());
+        Employee oldest = new Employee("Dummy", 0, new Date());
+        for(Employee e : employees.getEmployees()){
+            if(e.getHireDate().compareTo(oldest.getHireDate())<0){
+                oldest = e;
+            }
+        }
+        return oldest;
     }
 }
