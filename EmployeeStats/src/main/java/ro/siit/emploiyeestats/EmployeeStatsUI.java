@@ -1,5 +1,7 @@
 package ro.siit.emploiyeestats;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -9,6 +11,9 @@ public class EmployeeStatsUI {
 
     public static void main(String[] args) {
         Employees employees = new Employees();
+        employees.addEmployee(new Employee("Jim", 500, getDateFor(2017, 1, 12)));
+        employees.addEmployee(new Employee("Mike", 200, getDateFor(2015, 7, 20)));
+        employees.addEmployee(new Employee("Craig", 300, getDateFor(2016, 7, 20)));
         EmployeeStats employeeStats = new EmployeeStats(employees);
         
         System.out.println("What would you like to know?");
@@ -30,5 +35,11 @@ public class EmployeeStatsUI {
             case 3:
                 System.exit(0);
         }
+    }
+
+    private static Date getDateFor(int year, int month, int day) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
+        return cal.getTime();
     }
 }
